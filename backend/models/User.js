@@ -22,8 +22,9 @@ const userSchema = new mongoose.Schema(
       default: "user",
     },
     subscription: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: [mongoose.Schema.Types.ObjectId],
       ref: "Course",
+      default: [],
     },
   },
   { timestamps: true } // Automatically add timestamps (created and updated) to each user document
