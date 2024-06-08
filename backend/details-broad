@@ -1,0 +1,339 @@
+# E-Learning Platform API Documentation
+
+## Overview
+
+This document provides comprehensive details on the E-Learning Platform API. It outlines the features, API endpoints, data requirements, and necessary authentication details. This platform enables users to register, login, access courses, and perform administrative tasks.
+
+## Features
+
+- **User Registration and Login:** Users can register and verify their accounts using OTP sent via email, login to the platform, and access their profiles.
+- **Course Management:** Users can browse all courses, view individual course details, and purchase courses.
+- **Lecture Management:** Users can view lectures for the courses they are subscribed to.
+- **Admin Operations:** Admin users can create, update, and delete courses and lectures. Admins can also fetch platform statistics.
+- **Payment Integration:** Integration with Razorpay for course purchases.
+
+## API Endpoints
+
+### User Routes
+
+#### 1. Register a New User
+
+- **Endpoint:** `POST /api/user/register`
+- **Description:** Registers a new user and sends an OTP for email verification.
+- **Request Body:**
+  ```json
+  {
+    "name": "string",
+    "email": "string",
+    "password": "string"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "OTP sent to your email",
+    "activationToken": "string"
+  }
+  ```
+
+#### 2. Verify User
+
+- **Endpoint:** `POST /api/user/verify`
+- **Description:** Verifies a user using the OTP.
+- **Request Body:**
+  ```json
+  {
+    "otp": "string",
+    "activationToken": "string"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "User Registered"
+  }
+  ```
+
+#### 3. Login User
+
+- **Endpoint:** `POST /api/user/login`
+- **Description:** Logs in a user and returns an authentication token.
+- **Request Body:**
+  ```json
+  {
+    "email": "string",
+    "password": "string"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "Welcome back {user.name}",
+    "token": "string",
+    "user": {
+      "name": "string",
+      "email": "string",
+      "role": "string",
+      "subscription": ["array of course IDs"]
+    }
+  }
+  ```
+
+#### 4. Get User Profile
+
+- **Endpoint:** `GET /api/user/me`
+- **Description:** Fetches the profile of the authenticated user.
+- **Headers:** `token: {authToken}`
+- **Response:**
+  ```json
+  {
+    "user": {
+      "name": "string",
+      "email": "string",
+      "role": "string",
+      "subscription": ["array of course IDs"]
+    }
+  }
+  ```
+
+### Course Routes
+
+#### 1. Get All Courses
+
+- **Endpoint:** `GET /api/course/all`
+- **Description:** Fetches a list of all available courses.
+- **Response:**
+  ```json
+  {
+    "courses": ["array of course objects"]
+  }
+  ```
+
+#### 2. Get Single Course
+
+- **Endpoint:** `GET /api/course/:id`
+- **Description:** Fetches details of a specific course.
+- **Response:**
+  ```json
+  {
+    "singleCourse": {
+      "title": "string",
+      "description": "string",
+      "image": "string",
+      "price": "number",
+      "duration": "number",
+      "category": "string",
+      "createdBy": "string",
+      "createdAt": "date"
+    }
+  }
+  ```
+
+#### 3. Get My Courses
+
+- **Endpoint:** `GET /api/mycourse`
+- **Description:** Fetches the list of courses the authenticated user is subscribed to.
+- **Headers:** `token: {authToken}`
+- **Response:**
+  ```json
+  {
+    "courses": ["array of course objects"]
+  }
+  ```
+
+#### 4. Checkout a Course
+
+- **Endpoint:** `POST /api/course/checkout/:id`
+- **Description:** Initiates the checkout process for a course.
+- **Headers:** `token: {authToken}`
+- **Response:**
+  ```json
+  {
+    "order": {
+      "id": "string",
+      "amount": "number",
+      "currency": "string"
+    },
+    "course": {
+      "title": "string",
+      "description": "string",
+      "price": "number"
+    }
+  }
+  ```
+
+#### 5. Payment Verification
+
+- **Endpoint:** `POST /api/verification/:id`
+- **Description:** Verifies the payment and updates the user’s subscription.
+- **Headers:** `token: {authToken}`
+- **Request Body:**
+  ```json
+  {
+    "razorpay_order_id": "string",
+    "razorpay_payment_id": "string",
+    "razorpay_signature": "string"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "Course Purchased Successfully"
+  }
+  ```
+
+### Lecture Routes
+
+#### 1. Fetch All Lectures
+
+- **Endpoint:** `GET /api/lectures/:id`
+- **Description:** Fetches all lectures of a specific course.
+- **Headers:** `token: {authToken}`
+- **Response:**
+  ```json
+  {
+    "lectures": ["array of lecture objects"]
+  }
+  ```
+
+#### 2. Fetch Single Lecture
+
+- **Endpoint:** `GET /api/lecture/:id`
+- **Description:** Fetches details of a specific lecture.
+- **Headers:** `token: {authToken}`
+- **Response:**
+  ```json
+  {
+    "lecture": {
+      "title": "string",
+      "description": "string",
+      "video": "string",
+      "course": "course ID",
+      "createdAt": "date"
+    }
+  }
+  ```
+
+### Admin Routes
+
+#### 1. Create Course
+
+- **Endpoint:** `POST /api/course/new`
+- **Description:** Creates a new course.
+- **Headers:** `token: {authToken}`
+- **Form Data:** `file: {imageFile}`
+- **Request Body:**
+  ```json
+  {
+    "title": "string",
+    "description": "string",
+    "category": "string",
+    "createdBy": "string",
+    "duration": "number",
+    "price": "number"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "Course created successfully",
+    "course": {
+      "title": "string",
+      "description": "string",
+      "category": "string",
+      "createdBy": "string",
+      "duration": "number",
+      "price": "number",
+      "image": "string"
+    }
+  }
+  ```
+
+#### 2. Add Lecture
+
+- **Endpoint:** `POST /api/course/:id`
+- **Description:** Adds a new lecture to a course.
+- **Headers:** `token: {authToken}`
+- **Form Data:** `file: {videoFile}`
+- **Request Body:**
+  ```json
+  {
+    "title": "string",
+    "description": "string"
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "message": "Lecture added successfully",
+    "lecture": {
+      "title": "string",
+      "description": "string",
+      "video": "string",
+      "course": "course ID"
+    }
+  }
+  ```
+
+#### 3. Delete Lecture
+
+- **Endpoint:** `DELETE /api/lecture/:id`
+- **Description:** Deletes a lecture by ID.
+- **Headers:** `token: {authToken}`
+- **Response:**
+  ```json
+  {
+    "message": "Lecture Deleted"
+  }
+  ```
+
+#### 4. Delete Course
+
+- **Endpoint:** `DELETE /api/course/:id`
+- **Description:** Deletes a course by ID, along with its lectures.
+- **Headers:** `token: {authToken}`
+- **Response:**
+  ```json
+  {
+    "message": "Course deleted"
+  }
+  ```
+
+#### 5. Get All Statistics
+
+- **Endpoint:** `GET /api/stats`
+- **Description:** Fetches statistics about the platform.
+- **Headers:** `token: {authToken}`
+- **Response:**
+  ```json
+  {
+    "stats": {
+      "totalCourses": "number",
+      "totalLectures": "number",
+      "totalUsers": "number"
+    }
+  }
+  ```
+
+## Authentication
+
+### Token Requirement
+
+- For all endpoints requiring user authentication, an `authToken` must be provided in the request headers.
+  ```json
+  {
+    "token": "Bearer {authToken}"
+  }
+  ```
+
+### Admin Privileges
+
+- Certain endpoints require the user to have admin privileges. These endpoints check for the `role` field in the user object.
+
+## Important Points
+
+- **Environment Variables:** Ensure that all environment variables (e.g., `JWT_SECRET`, `EMAIL`, `EMAIL_PASSWORD`, `MONGODB_URL_LOCAL`, `Razorpay_key_id`, `Razorpay_key_secret`) are correctly configured in the `.env` file.
+- **Error Handling:** The middleware `TryCatch` is used for error handling across the controllers.
+- **File Uploads:** `multer` middleware is used for handling file uploads for courses and lectures.
+
+This documentation provides a complete reference to the API endpoints, their usage, and the necessary authentication details for effective integration and usage of the E-Learning Platform API.
