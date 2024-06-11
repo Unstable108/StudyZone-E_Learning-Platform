@@ -6,6 +6,7 @@ import Header from "./components/header/Header";
 import Login from "./components/pages/auth/Login";
 import Register from "./components/pages/auth/Register";
 import Verify from "./components/pages/auth/Verify-otp";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/verify_otp" element={<Verify />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );
