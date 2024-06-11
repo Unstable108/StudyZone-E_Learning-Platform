@@ -1,10 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const db = require("./db");
 require("dotenv").config();
 
 // app.use(bodyParser.json());
 app.use(express.json());
+app.use(cors());
 
 // Import the Router files
 const userRoutes = require("./routes/userRoutes");
