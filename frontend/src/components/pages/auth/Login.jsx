@@ -1,18 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "./auth.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Userdata } from "../../../context/UserContext";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { btnLoading, loginUser } = Userdata();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    await loginUser(email, password, navigate);
+  };
+
   return (
     <div className="auth-page">
       <div className="auth-form">
         <h2>Login</h2>
-        <form>
+        <form onSubmit={submitHandler}>
           <label htmlFor="email">E-mail</label>
-          <input type="email" placeholder="Enter Your E-mail" required />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter Your E-mail"
+            required
+          />
           <label htmlFor="password">Password</label>
-          <input type="password" placeholder="Enter Your Password" required />
-          <button className="common-btn">Login</button>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter Your Password"
+            required
+          />
+          <button disabled={btnLoading} type="submit" className="common-btn">
+            {btnLoading ? "Please wait..." : "Login"}
+          </button>
         </form>
         <p>
           Don't have an account?

@@ -5,7 +5,7 @@ import logo1 from "./images/logo1.png";
 import logo2 from "./images/logo2.png";
 import logo3 from "./images/logo3.png";
 
-const Header = () => {
+const Header = ({ isAuth }) => {
   const logos = [logo3];
   const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
 
@@ -32,7 +32,11 @@ const Header = () => {
           <Link to={"/"}>Home</Link>
           <Link to={"/courses"}>Courses</Link>
           <Link to={"/about"}>About</Link>
-          <Link to={"/account"}>Account</Link>
+          {isAuth ? (
+            <Link to={"/account"}>Account</Link>
+          ) : (
+            <Link to={"/login"}>Login</Link>
+          )}
         </div>
       </header>
     </div>

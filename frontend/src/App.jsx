@@ -9,23 +9,31 @@ import Verify from "./components/pages/auth/Verify-otp";
 import Footer from "./components/footer/Footer";
 import About from "./components/pages/about/About";
 import Account from "./components/pages/account/Account";
+import { Userdata } from "./context/UserContext";
 
 const App = () => {
+  const { isAuth, Loading, user } = Userdata();
+
+  if (Loading) {
+    return <div>Loading...</div>; // Add a loading indicator
+  }
+
   return (
-    <>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/verify_otp" element={<Verify />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Header isAuth={isAuth} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route
+          path="/account"
+          element={isAuth ? <Account user={user} /> : <Login />}
+        />
+        <Route path="/login" element={isAuth ? <Home /> : <Login />} />
+        <Route path="/register" element={isAuth ? <Home /> : <Register />} />
+        <Route path="/verify_otp" element={isAuth ? <Home /> : <Verify />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 };
 
