@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema(
     },
     subscription: {
       type: [mongoose.Schema.Types.ObjectId],
-      ref: "Course",
+      ref: "Courses",
       default: [],
     },
   },

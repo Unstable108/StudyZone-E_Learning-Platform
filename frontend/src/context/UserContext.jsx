@@ -11,7 +11,7 @@ export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuth, setIsAuth] = useState(false);
   const [btnLoading, setBtnLoading] = useState(false);
-  const [Loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   async function loginUser(email, password, navigate) {
     setBtnLoading(true);
@@ -65,7 +65,7 @@ export const UserContextProvider = ({ children }) => {
         isAuth,
         loginUser,
         btnLoading,
-        Loading,
+        loading,
       }}
     >
       {children}
