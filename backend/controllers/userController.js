@@ -23,7 +23,7 @@ const register = async (req, res) => {
       password: hashPassword,
     });
 
-    const otp = String(Math.floor(100000 + Math.random() * 900000));
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
     const activationToken = jwt.sign({ user, otp }, process.env.JWT_SECRET, {
       expiresIn: "5m",
@@ -115,7 +115,6 @@ const myProfile = TryCatch(async (req, res) => {
     }
 
     res.json({ user });
-    console.log(`Profile data fetched`);
   } catch (error) {
     console.error("Error occurred while fetching profile:", error);
     res.status(500).json({ error: "Internal Server Error" });

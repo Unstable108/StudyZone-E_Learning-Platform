@@ -1,11 +1,12 @@
 .profile {
   background-color: white;
-  padding: 30px; /* Increased padding for better spacing */
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Slightly increased shadow for better depth */
-  width: 40%; /* Increased width */
+  padding: 40px; /* Increased padding for better spacing */
+  border-radius: 15px; /* More rounded corners */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Increased shadow for better depth */
+  width: 50%; /* Increased width */
   margin: 150px auto; /* Adjusted margin for better alignment */
   text-align: center; /* Centered text alignment */
+  font-family: "Arial", sans-serif; /* Changed font for a modern look */
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -14,23 +15,37 @@
   }
 
   h2 {
-    font-size: 28px; /* Slightly larger font size */
+    font-size: 32px; /* Larger font size */
     color: #344c64; /* Consistent heading color */
     margin-bottom: 25px;
+    font-weight: 600; /* Slightly bolder font */
   }
 
   .profile-info {
     text-align: left;
-    margin-top: 15px;
+    margin-top: 20px;
 
-    p {
-      margin-bottom: 15px;
-      color: #333;
-      font-size: 16px; /* Increased font size */
+    .profile-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 10px 20px; /* Added padding for better spacing */
+      background-color: #f9f9f9; /* Light background for each item */
+      border-radius: 10px; /* Rounded corners for items */
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for items */
     }
 
-    strong {
-      color: #8a4baf; /* Highlight color */
+    .profile-label {
+      font-size: 18px;
+      color: #888; /* Gray color for labels */
+      font-weight: 500;
+    }
+
+    .profile-value {
+      font-size: 18px;
+      color: #333; /* Dark color for values */
+      font-weight: 600; /* Bolder font for values */
     }
   }
 
@@ -43,6 +58,7 @@
     margin-top: 20px;
     padding: 12px; /* Increased padding for better button size */
   }
+
   .logout-btn {
     background-color: #f44336; /* Red color for logout */
     color: white;

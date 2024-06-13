@@ -5,7 +5,6 @@ const isAuth = async (req, res, next) => {
   try {
     const token = req.headers.token;
     if (!token) {
-      console.log("Token not provided");
       return res.status(403).json({
         message: "Login Again",
       });
