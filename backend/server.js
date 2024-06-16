@@ -8,6 +8,8 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cors());
 
+app.use("/uploads", express.static("uploads"));
+
 // Import the Router files
 const userRoutes = require("./routes/userRoutes");
 const coursesRoutes = require("./routes/coursesRoutes");

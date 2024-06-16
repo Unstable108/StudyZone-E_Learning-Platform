@@ -1,0 +1,20 @@
+.courses {
+  padding: 60px 0;
+  text-align: center;
+  min-height: 60vh;
+  background-color: #f4f4f4; /* Light gray background for a subtle contrast */
+}
+
+.courses h2 {
+  font-size: 36px;
+  color: #344c64; /* Match with the button hover color */
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.course-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
