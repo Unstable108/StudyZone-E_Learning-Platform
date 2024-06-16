@@ -48,3 +48,20 @@
 .course-card .common-btn:hover {
   background-color: #55ad9b; /* Match the existing button hover color */
 }
+
+/* New styles for the delete button */
+.course-card .delete-btn {
+  background-color: #ff6b6b; /* Red background for the delete button */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px; /* Rounded buttons for a modern look */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 10px; /* Ensure some spacing above the delete button */
+}
+
+.course-card .delete-btn:hover {
+  background-color: #e63946; /* Darker red on hover */
+  transform: scale(1.05); /* Slight scale up on hover */
+}

@@ -12,6 +12,7 @@ import Account from "./components/pages/account/Account";
 import { Userdata } from "./context/UserContext";
 import Loading from "./components/loading/Loading";
 import Courses from "./components/pages/courses/Courses";
+import CourseDescription from "./components/pages/coursedescription/CourseDescription";
 
 const App = () => {
   const { isAuth, loading, user } = Userdata();
@@ -39,6 +40,10 @@ const App = () => {
             <Route
               path="/verify_otp"
               element={isAuth ? <Home /> : <Verify />}
+            />
+            <Route
+              path="/course/:id"
+              element={isAuth ? <CourseDescription user={user} /> : <Login />}
             />
           </Routes>
           <Footer />
