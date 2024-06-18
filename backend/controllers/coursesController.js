@@ -1,65 +1,50 @@
 const { instance } = require("../middlewares/razorPay");
 const { TryCatch } = require("../middlewares/tryCatch");
 const Courses = require("../models/Courses");
-const { Payment } = require("../models/Payment");
+const Payment = require("../models/Payment"); // Correct import
 const User = require("../models/User");
 const crypto = require("crypto");
 
 const getAllCourses = TryCatch(async (req, res) => {
   const courses = await Courses.find();
-
-  res.json({
-    courses,
-  });
+  res.json({ courses });
 });
 
 const getSingleCourse = TryCatch(async (req, res) => {
   const singleCourse = await Courses.findById(req.params.id);
-
-  res.json({
-    singleCourse,
-  });
+  res.json({ singleCourse });
 });
 
 const getMyCourses = TryCatch(async (req, res) => {
   const courses = await Courses.find({ _id: req.user.subscription });
-
-  res.json({
-    courses,
-  });
+  res.json({ courses });
 });
 
 const checkOut = TryCatch(async (req, res) => {
   const user = await User.findById(req.user._id);
-
   const course = await Courses.findById(req.params.id);
 
   if (user.subscription.includes(course._id)) {
-    return res.status(400).json({
-      message: `You already have this course`,
-    });
+    return res.status(400).json({ message: `You already have this course` });
   }
 
   const options = {
-    ammount: Number(course.price * 100),
+    amount: Number(course.price * 100), // Corrected spelling of 'amount'
     currency: "INR",
   };
 
   const order = await instance.orders.create(options);
-
-  res.status(201).json({
-    order,
-    course,
-  });
+  res.status(201).json({ order, course });
 });
 
 const paymentVerification = TryCatch(async (req, res) => {
-  const { razorpay_order_id, razorpay_payment_id, signature } = req.body;
+  const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+    req.body;
 
   const body = razorpay_order_id + "|" + razorpay_payment_id;
 
   const expectedSignature = crypto
-    .createHmac("sha256", process.env.Razorpay_Key_Secret)
+    .createHmac("sha256", process.env.Razorpay_key_secret)
     .update(body)
     .digest("hex");
 
@@ -73,20 +58,16 @@ const paymentVerification = TryCatch(async (req, res) => {
     });
 
     const user = await User.findById(req.user._id);
-
     const course = await Courses.findById(req.params.id);
 
     user.subscription.push(course._id);
-
     await user.save();
 
     res.status(200).json({
-      message: `Course Purchased Succesfully`,
+      message: `Course Purchased Successfully`,
     });
   } else {
-    return res.status(400).json({
-      message: `Payment Failed`,
-    });
+    return res.status(400).json({ message: `Payment Failed` });
   }
 });
 
