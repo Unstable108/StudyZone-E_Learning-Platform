@@ -31,7 +31,10 @@ const Account = ({ user }) => {
             <p>
               <strong>Email - {user.email}</strong>
             </p>
-            <button className="common-btn1">
+            <button
+              onClick={() => navigate(`/${user._id}/dashboard`)}
+              className="common-btn1"
+            >
               <MdDashboard />
               Dashboard
             </button>
