@@ -27,7 +27,7 @@ const fetchLecture = TryCatch(async (req, res) => {
   if (user.role === "admin") {
     return res.json({ lecture });
   }
-  if (!user.subscription || !user.subscription.includes(req.params.id)) {
+  if (!user.subscription || !user.subscription.includes(lecture.course)) {
     return res.status(400).json({
       message: `You have not subscribed to this course`,
     });

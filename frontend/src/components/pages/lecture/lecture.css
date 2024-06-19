@@ -1,0 +1,177 @@
+.lecture-page {
+  display: flex;
+  justify-content: space-between;
+  min-height: 80vh;
+  padding: 20px;
+  background-color: #f0f2f5;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .left {
+    width: 70%;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 768px) {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    video {
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #344c64;
+      margin-top: 20px;
+    }
+
+    h3 {
+      font-size: 18px;
+      color: #344c64;
+      margin-top: 10px;
+    }
+  }
+
+  .right {
+    width: 28%;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    .lecture-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-bottom: 20px;
+
+      h2 {
+        font-size: 22px;
+        color: #344c64;
+        margin-bottom: 15px;
+      }
+
+      form {
+        text-align: left;
+
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-size: 14px;
+          color: #333;
+        }
+
+        input {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 15px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+        }
+
+        input:focus {
+          border-color: #95d2b3;
+          box-shadow: 0px 2px 10px rgba(149, 210, 179, 0.3);
+        }
+
+        .add-lecture-btn {
+          width: 100%;
+          padding: 10px;
+          background-color: #91ddcf;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease, transform 0.3s ease;
+          font-size: 18px;
+          margin-top: 10px;
+        }
+
+        .add-lecture-btn:hover {
+          background-color: #06d001;
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .lecture-number {
+      background-color: #fff;
+      padding: 15px;
+      border: 1px solid #ddd;
+      margin-top: 10px;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background-color: #95d2b3;
+        color: white;
+      }
+    }
+
+    .active {
+      background-color: #95d2b3;
+      color: white;
+    }
+
+    .add-lecture-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4c3bcf;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .add-lecture-button:hover {
+      background-color: #55ad9b;
+      transform: scale(1.05);
+    }
+
+    .course-delete-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .course-delete-btn:hover {
+      background-color: #c9302c;
+    }
+  }
+}
+
+.progress {
+  width: 20%;
+  background-color: #333;
+  padding: 6px;
+  border-radius: 5px;
+  margin: 3px auto;
+  text-align: center;
+  color: white;
+}

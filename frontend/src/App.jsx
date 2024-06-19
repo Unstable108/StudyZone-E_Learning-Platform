@@ -16,6 +16,7 @@ import CourseDescription from "./components/pages/coursedescription/CourseDescri
 import PaymentSuccess from "./components/pages/paymentsuccess/PaymentSuccess";
 import Dashboard from "./components/pages/dashboard/Dashboard";
 import CourseStudy from "./components/pages/courseStudy/CourseStudy";
+import Lecture from "./components/pages/lecture/Lecture";
 
 const App = () => {
   const { isAuth, loading, user } = Userdata();
@@ -59,6 +60,10 @@ const App = () => {
             <Route
               path="/course/study/:id"
               element={isAuth ? <CourseStudy user={user} /> : <Login />}
+            />
+            <Route
+              path="/lectures/:id"
+              element={isAuth ? <Lecture user={user} /> : <Login />}
             />
           </Routes>
           <Footer />
