@@ -7,6 +7,7 @@
   width: 300px;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  margin: 15px;
 }
 
 .course-card:hover {
@@ -36,32 +37,32 @@
 }
 
 .course-card .common-btn {
-  background-color: #95d2b3; /* Match the existing button color */
+  background-color: #91ddcf;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
-  border-radius: 25px; /* Rounded buttons for a modern look */
+  border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
 }
 
 .course-card .common-btn:hover {
-  background-color: #55ad9b; /* Match the existing button hover color */
+  background-color: #55ad9b;
+  transform: scale(1.05);
 }
 
-/* New styles for the delete button */
 .course-card .delete-btn {
-  background-color: #ff6b6b; /* Red background for the delete button */
+  background-color: #ff6b6b;
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 25px; /* Rounded buttons for a modern look */
+  border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
-  margin-top: 10px; /* Ensure some spacing above the delete button */
+  margin-top: 10px;
 }
 
 .course-card .delete-btn:hover {
-  background-color: #e63946; /* Darker red on hover */
-  transform: scale(1.05); /* Slight scale up on hover */
+  background-color: #e63946;
+  transform: scale(1.05);
 }

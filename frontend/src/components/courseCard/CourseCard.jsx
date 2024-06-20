@@ -3,6 +3,9 @@ import "./coursecard.css";
 import { server } from "../../main";
 import { Userdata } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { CourseData } from "../../context/CourseContext";
 
 const CourseCard = ({ course }) => {
   // Replace backslashes with forward slashes in the image path
@@ -10,6 +13,25 @@ const CourseCard = ({ course }) => {
 
   const navigate = useNavigate();
   const { user, isAuth } = Userdata();
+
+  const { fetchCourses } = CourseData();
+
+  const deleteHandler = async (id) => {
+    if (confirm("Are you sure you want to delete this course")) {
+      try {
+        const { data } = await axios.delete(`${server}/api/course/${id}`, {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        });
+
+        toast.success(data.message);
+        fetchCourses();
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+    }
+  };
 
   return (
     <div className="course-card">
@@ -55,7 +77,12 @@ const CourseCard = ({ course }) => {
 
       <br />
       {user && user.role === "admin" && (
-        <button className="delete-btn">Delete</button>
+        <button
+          onClick={() => deleteHandler(course._id)}
+          className="delete-btn"
+        >
+          Delete
+        </button>
       )}
     </div>
   );
