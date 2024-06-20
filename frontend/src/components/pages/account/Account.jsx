@@ -39,6 +39,16 @@ const Account = ({ user }) => {
               Dashboard
             </button>
             <br />
+            {user.role === "admin" && (
+              <button
+                onClick={() => navigate(`/admin/dashboard`)}
+                className="common-btn1"
+              >
+                <MdDashboard />
+                Admin Dashboard
+              </button>
+            )}
+            <br />
             <button onClick={logoutHandler} className="logout-btn">
               <IoIosLogOut />
               Logout

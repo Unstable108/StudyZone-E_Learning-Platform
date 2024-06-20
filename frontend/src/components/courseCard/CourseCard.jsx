@@ -65,7 +65,7 @@ const CourseCard = ({ course }) => {
               onClick={() => navigate(`/course/study/${course._id}`)}
               className="common-btn"
             >
-              Study
+              Modify
             </button>
           )}
         </>
