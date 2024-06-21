@@ -7,10 +7,11 @@
   width: 300px;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
-  margin: 15px auto; /* Centering the card horizontally */
+  margin: 15px auto; /* Centering horizontally */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Ensures buttons are spaced evenly */
+  height: 100%; /* Added height to ensure full height of parent container */
 }
 
 .course-card:hover {
@@ -31,12 +32,14 @@
   color: #333;
   margin-bottom: 15px;
   font-weight: 600;
+  text-align: center; /* Center aligning the title */
 }
 
 .course-card p {
   font-size: 16px;
   color: #666;
   margin-bottom: 10px;
+  text-align: center; /* Center aligning all paragraphs */
 }
 
 .course-card .common-btn {
