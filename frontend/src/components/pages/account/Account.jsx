@@ -22,33 +22,47 @@ const Account = ({ user }) => {
   return (
     <>
       {user && (
-        <div className="profile">
-          <h2>My Profile</h2>
-          <div className="profile-info">
-            <p>
-              <strong>Name - {user.name}</strong>
-            </p>
-            <p>
-              <strong>Email - {user.email}</strong>
-            </p>
-            <button
-              onClick={() => navigate(`/${user._id}/dashboard`)}
-              className="common-btn1"
-            >
-              <MdDashboard />
-              Dashboard
-            </button>
-            <br />
-            {user.role === "admin" && (
-              <button
-                onClick={() => navigate(`/admin/dashboard`)}
-                className="common-btn1"
-              >
-                <MdDashboard />
-                Admin Dashboard
-              </button>
-            )}
-            <br />
+        <div className="container">
+          <div className="sidenav">
+            <div className="profile">
+              <img
+                src="https://imdezcode.files.wordpress.com/2020/02/imdezcode-logo.png"
+                alt="Profile Pic"
+                width="100"
+                height="100"
+              />
+              <div className="name">{user.name}</div>
+            </div>
+            <div className="sidenav-links">
+              <a href="#profile" className="active">
+                Profile
+              </a>
+              {user.role === "admin" && (
+                <a href="/admin/dashboard">Admin Dashboard</a>
+              )}
+              <a href={`/${user._id}/dashboard`}>Dashboard</a>
+            </div>
+          </div>
+          <div className="main">
+            <h2>Identity</h2>
+            <div className="card">
+              <div className="card-body">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Name</td>
+                      <td>:</td>
+                      <td>{user.name}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>:</td>
+                      <td>{user.email}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
             <button onClick={logoutHandler} className="logout-btn">
               <IoIosLogOut />
               Logout
