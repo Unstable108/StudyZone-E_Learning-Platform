@@ -1,12 +1,18 @@
 .sidebar {
-  width: 200px;
+  width: 150px;
   height: 100%;
   left: 0;
+  background-color: #344c64; /* Dark Blue for sidebar */
   color: white;
-  border-right: 1px solid gray;
+  border-right: 1px solid #2b3a4e;
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 20px 10px;
 
   @media (max-width: 768px) {
-    width: 30px;
+    width: 60px;
   }
 
   ul {
@@ -14,22 +20,28 @@
     padding: 0;
 
     li {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       cursor: pointer;
-      padding: 12px;
+      padding: 15px 10px;
 
       @media (max-width: 768px) {
-        padding: 7px;
+        padding: 10px 5px;
       }
 
       &:hover {
-        background-color: gray;
+        background-color: #3a4a63; /* Slight hover effect */
       }
 
       a {
         display: flex;
+        align-items: center;
         text-decoration: none;
-        counter-reset: blueviolet;
+        color: white;
+        font-size: 16px;
+
+        .icon {
+          font-size: 20px;
+        }
 
         span {
           margin-left: 15px;
@@ -45,6 +57,6 @@
 
 .dashboard-admin {
   display: flex;
-  min-height: 80vh;
-  margin-top: 20px;
+  min-height: 100vh; /* Full height for better layout */
+  margin-top: 60px; /* Adjust for header */
 }

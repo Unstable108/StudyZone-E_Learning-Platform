@@ -1,0 +1,60 @@
+.users {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #344c64;
+  margin-bottom: 20px;
+  text-align: center; /* Centered heading */
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #344c64;
+  color: white;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.common-btn7 {
+  background-color: #95d2b3;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.common-btn7:hover {
+  background-color: #55ad9b;
+  transform: scale(1.05);
+}
+
+.common-btn7:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(149, 210, 179, 0.5);
+}

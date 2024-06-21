@@ -20,7 +20,7 @@
 } */
 
 /* admindashboard.css */
-.main-content {
+/* .main-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,6 +40,44 @@
 
     &:hover {
       background-color: #0056b3;
+    }
+
+    p {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+} */
+
+/* Admin Dashboard Main Content Styles */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px 20px;
+  margin-left: 220px; /* Adjust for sidebar width */
+
+  @media (max-width: 768px) {
+    margin-left: 60px; /* Adjust for responsive sidebar */
+    padding: 20px 10px;
+  }
+
+  .box {
+    flex: 1;
+    min-width: 250px;
+    background-color: #95d2b3; /* Matching the primary button color */
+    padding: 30px;
+    border-radius: 12px; /* More rounded corners */
+    text-align: center;
+    color: #344c64; /* Darker text color */
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+
+    &:hover {
+      background-color: #55ad9b; /* Slightly darker on hover */
+      transform: scale(1.05); /* Slight scale up on hover */
     }
 
     p {

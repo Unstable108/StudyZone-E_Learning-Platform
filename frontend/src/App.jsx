@@ -19,6 +19,7 @@ import CourseStudy from "./components/pages/courseStudy/CourseStudy";
 import Lecture from "./components/pages/lecture/Lecture";
 import AdminDashboard from "./admin/dashboard/AdminDashboard";
 import AdminCourses from "./admin/courses/AdminCourses";
+import AdminUsers from "./admin/users/AdminUsers";
 
 const App = () => {
   const { isAuth, loading, user } = Userdata();
@@ -74,6 +75,10 @@ const App = () => {
             <Route
               path="/admin/course"
               element={isAuth ? <AdminCourses user={user} /> : <Login />}
+            />
+            <Route
+              path="/admin/users"
+              element={isAuth ? <AdminUsers user={user} /> : <Login />}
             />
           </Routes>
           <Footer />

@@ -4,11 +4,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 80vh;
-  text-align: center;
+  min-height: 100vh; /* Adjusted to ensure full viewport height */
 }
 
 .course-study-page img {
+  width: 100%;
+  max-width: 350px; /* Limiting maximum width of the image */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
@@ -21,28 +22,34 @@
 }
 
 .course-study-page h4 {
-  font-size: 24px;
+  font-size: 20px; /* Reduced font size for description */
   color: #555;
   margin: 10px 0;
 }
 
 .course-study-page h5 {
-  font-size: 20px;
+  font-size: 18px; /* Slightly reduced font size for secondary information */
   color: #777;
   margin: 5px 0;
 }
 
 .course-study-page a {
   text-decoration: none;
-  background-color: #95d2b3;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  margin-top: 20px;
-  transition: background 0.3s, transform 0.3s;
 }
 
-.course-study-page a:hover {
-  background-color: #55ad9b;
+.course-study-page a .button-19 {
+  background-color: #007bff; /* Primary color for the button */
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  margin-top: 20px;
+  transition: background-color 0.3s, transform 0.3s;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.course-study-page a .button-19:hover {
+  background-color: #0056b3; /* Darker shade on hover */
   transform: scale(1.05);
 }

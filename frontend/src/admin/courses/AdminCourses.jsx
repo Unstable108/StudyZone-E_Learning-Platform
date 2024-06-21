@@ -104,39 +104,45 @@ const AdminCourses = ({ user }) => {
             <div className="course-form">
               <h2>Add Course</h2>
               <form onSubmit={submitHandler}>
-                <label htmlFor="text">Title</label>
+                <label htmlFor="title">Title</label>
                 <input
+                  id="title"
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   required
                 />
 
-                <label htmlFor="text">Description</label>
+                <label htmlFor="description">Description</label>
                 <input
+                  id="description"
                   type="text"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   required
                 />
 
-                <label htmlFor="text">Price</label>
+                <label htmlFor="price">Price</label>
                 <input
+                  id="price"
                   type="number"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                   required
                 />
 
-                <label htmlFor="text">createdBy</label>
+                <label htmlFor="createdBy">Created By</label>
                 <input
+                  id="createdBy"
                   type="text"
                   value={createdBy}
                   onChange={(e) => setCreatedBy(e.target.value)}
                   required
                 />
 
+                <label htmlFor="category">Category</label>
                 <select
+                  id="category"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 >
@@ -148,16 +154,29 @@ const AdminCourses = ({ user }) => {
                   ))}
                 </select>
 
-                <label htmlFor="text">Duration</label>
+                <label htmlFor="duration">Duration</label>
                 <input
+                  id="duration"
                   type="number"
                   value={duration}
                   onChange={(e) => setDuration(e.target.value)}
                   required
                 />
-                <label htmlFor="text">Thumbnail</label>
-                <input type="file" required onChange={changeImageHandler} />
-                {imagePrev && <img src={imagePrev} alt="" width={300} />}
+
+                <label htmlFor="thumbnail">Thumbnail</label>
+                <input
+                  id="thumbnail"
+                  type="file"
+                  required
+                  onChange={changeImageHandler}
+                />
+                {imagePrev && (
+                  <img
+                    src={imagePrev}
+                    alt="Preview"
+                    className="image-preview"
+                  />
+                )}
 
                 <button
                   type="submit"

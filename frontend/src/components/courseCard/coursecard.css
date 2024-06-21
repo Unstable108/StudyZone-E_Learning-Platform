@@ -7,7 +7,10 @@
   width: 300px;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
-  margin: 15px;
+  margin: 15px auto; /* Centering the card horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures buttons are spaced evenly */
 }
 
 .course-card:hover {
@@ -37,13 +40,14 @@
 }
 
 .course-card .common-btn {
-  background-color: #91ddcf;
+  background-color: #9bec00;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
+  margin-bottom: 10px; /* Spacing between buttons */
 }
 
 .course-card .common-btn:hover {
@@ -52,14 +56,13 @@
 }
 
 .course-card .delete-btn {
-  background-color: #ff6b6b;
+  background-color: #e75151;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
-  margin-top: 10px;
 }
 
 .course-card .delete-btn:hover {

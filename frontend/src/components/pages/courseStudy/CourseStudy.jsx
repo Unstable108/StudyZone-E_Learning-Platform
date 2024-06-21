@@ -27,7 +27,10 @@ const CourseStudy = ({ user }) => {
           <h5>By - {course.createdBy}</h5>
           <h5>Duration - {course.duration} weeks</h5>
           <Link to={`/lectures/${course._id}`}>
-            <h2>Lectures</h2>
+            {/* <h2>Lectures</h2> */}
+            <button class="button-19" role="button">
+              Lectures
+            </button>
           </Link>
         </div>
       )}
