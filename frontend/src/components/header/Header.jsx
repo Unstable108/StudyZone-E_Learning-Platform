@@ -27,7 +27,7 @@ const Header = ({ isAuth }) => {
             className="logo-image"
           />
           {/* <div className="logo-text">Study Zone</div> */}
-          <button class="button-54">Study Zone</button>
+          <button className="button-54">Study Zone</button>
         </div>
         <div className="link">
           <Link to={"/"}>Home</Link>
