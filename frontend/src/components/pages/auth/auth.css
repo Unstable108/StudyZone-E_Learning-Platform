@@ -75,3 +75,11 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0; /* Safari and Chrome */
 }
+
+.guest-btn {
+  background-color: #37b7c3; /* Normal color */
+}
+
+.guest-btn:hover {
+  background-color: #4c3bcf; /* Hover color */
+}

@@ -17,6 +17,12 @@ const Login = () => {
     await loginUser(email, password, navigate, fetchMyCourse);
   };
 
+  const guestLoginHandler = async () => {
+    const guestEmail = "debasish2000.26@gmail.com"; // Replace with the guest email
+    const guestPassword = "123456"; // Replace with the guest password
+    await loginUser(guestEmail, guestPassword, navigate, fetchMyCourse);
+  };
+
   return (
     <div className="auth-page">
       <div className="auth-form">
@@ -42,6 +48,13 @@ const Login = () => {
             {btnLoading ? "Please wait..." : "Login"}
           </button>
         </form>
+        <button
+          disabled={btnLoading}
+          onClick={guestLoginHandler}
+          className="common-btn guest-btn"
+        >
+          {btnLoading ? "Please wait..." : "Guest Login"}
+        </button>
         <p>
           Don't have an account?
           <Link to="/register">Register</Link>
