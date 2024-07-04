@@ -1,5 +1,5 @@
 
-# StudyZone - E-Learning Platform
+# StudyZone - An E-Learning Platform
 
 ## Table of Contents
 
